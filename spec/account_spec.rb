@@ -5,8 +5,14 @@ describe Account do
   subject(:account) { described_class.new()}
 
   describe '#balance' do
-    it "starts with a balance of zero" do
+    it 'starts with a balance of zero' do
       expect(subject.balance).to eq(0)
+    end
+  end
+
+  describe '#transactions' do
+    it 'starts with an empty list of transactions' do
+      expect(subject.transactions).to be_empty
     end
   end
 
@@ -36,7 +42,6 @@ describe Account do
     it 'only cannot withdraw more than current balance' do
       expect{subject.withdraw(60)}.to raise_error "Withdrawal exceeds account balance"
     end
-
   end
 
 end
