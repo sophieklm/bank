@@ -14,6 +14,15 @@ describe Account do
     it 'starts with an empty list of transactions' do
       expect(subject.transactions).to be_empty
     end
+    it 'adds a deposit to the list of transactions' do
+      subject.deposit(20)
+      expect(subject.transactions).to include(a_kind_of(Transaction))
+    end
+    it 'adds a withdrawal to the list of transactions' do
+      account.deposit(20)
+      account.withdraw(20)
+      expect(account.transactions[1]).to have_attributes(type: :withdrawal)
+    end
   end
 
   describe '#deposit' do

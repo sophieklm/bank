@@ -10,13 +10,13 @@ class Account
 
   def deposit(amount)
     catch_error(amount)
-    process_deposit(amount)
+    process_transaction(:deposit, amount)
   end
 
   def withdraw(amount)
     catch_error(amount)
     fail 'Withdrawal exceeds account balance' if (@balance - amount) < 0
-    process_withdrawal(amount)
+    process_transaction(:withdrawal, amount)
   end
 
   private
@@ -25,13 +25,13 @@ class Account
     fail 'Cannot process a negative amount' if amount < 0
   end
 
-  def process_deposit(amount)
-    Transaction.new(:deposit, amount)
-    @balance += amount
-  end
-
-  def process_withdrawal(amount)
-    Transaction.new(:withdrawal, amount)
-    @balance -= amount
+  def process_transaction(type, amount)
+    transaction = Transaction.new(type, amount)
+    self.transactions << transaction
+    if type == :deposit
+      @balance += amount
+    elsif type == :withdrawal
+      @balance -= amount
+    end
   end
 end

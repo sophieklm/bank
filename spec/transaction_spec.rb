@@ -15,4 +15,10 @@ describe Transaction do
       expect(transaction.amount).to eq(amount)
     end
   end
+
+  it 'can take a withdrawal' do
+    withdrawal = described_class.new(:withdrawal, 20)
+    expect(withdrawal).to have_attributes(type: :withdrawal)
+  end
+
 end
