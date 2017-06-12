@@ -10,4 +10,5 @@ group :development, :test do
   gem 'rubocop'
   gem 'simplecov'
   gem 'simplecov-console'
+  gem 'timecop'
 end
