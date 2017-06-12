@@ -1,8 +1,9 @@
 ## Bank
 
-A command line banking app written in Ruby, implementing Object Oriented Design with Test Driven Development
+A command line banking app written in Ruby, implementing Object Oriented Design with Test Driven Development.
 
 User Stories
+---
 ```
 As a client
 So that I can have an environment for storing money
@@ -39,14 +40,12 @@ $ pry
 
 ```
 
-### Requirements
+### Specification
 
 * You should be able to interact with the your code via a REPL like IRB or the JavaScript console.
 * Deposits, withdrawal.
 * Account statement (date, amount, balance) printing.
 * Data can be kept in memory (it doesn't need to be stored to a database or anything).
-
-### Acceptance criteria
 
 **Given** a client makes a deposit of 1000 on 10-01-2012
 **And** a deposit of 2000 on 13-01-2012
