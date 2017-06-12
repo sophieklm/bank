@@ -31,8 +31,10 @@ $ bundle
 $ rspec
 $ pry
 
-> require './lib/bank.rb'
+> require './lib/account.rb'
 > account = Account.new
+> account.deposit(20)
+> account.withdraw(10)
 
 ```
 
