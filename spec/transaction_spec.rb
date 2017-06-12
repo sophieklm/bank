@@ -3,8 +3,8 @@ require 'transaction'
 describe Transaction do
   let(:deposit) { described_class.new(:deposit, 10, 20) }
   let(:withdrawal) { described_class.new(:withdrawal, 10, 20) }
-  time = Time.now
-  Timecop.freeze(time)
+  date = Time.now
+  Timecop.freeze(date)
   describe '#initialise' do
     it 'shows what type of transaction took place' do
       expect(deposit.type).to eq(:deposit)
@@ -19,7 +19,7 @@ describe Transaction do
       expect(withdrawal).to have_attributes(type: :withdrawal)
     end
     it 'shows the date it took place' do
-      expect(deposit.date).to eq(time)
+      expect(deposit.date).to eq(date)
     end
   end
 
