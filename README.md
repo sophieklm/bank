@@ -1,4 +1,4 @@
-## Bank
+# Bank
 
 A command line banking app written in Ruby, implementing Object Oriented Design with Test Driven Development.
 
