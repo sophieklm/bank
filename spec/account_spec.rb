@@ -10,4 +10,10 @@ describe Account do
     end
   end
 
+  describe '#deposit' do
+    it 'increases the balance by the amount specified' do
+      expect{subject.deposit(10)}.to change{subject.balance}.by(10);
+    end
+  end
+
 end
