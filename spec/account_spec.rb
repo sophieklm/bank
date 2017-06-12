@@ -1,8 +1,9 @@
 require 'account'
 
 describe Account do
-  subject(:account) { described_class.new }
   let(:transaction) { double :transaction }
+  let(:statement) { double :statement }
+  subject(:account) { described_class.new(statement: statement) }
 
   describe '#balance' do
     it 'starts with a balance of zero' do
@@ -50,6 +51,17 @@ describe Account do
 
     it 'only cannot withdraw more than current balance' do
       expect { subject.withdraw(60) }.to raise_error 'Withdrawal exceeds account balance'
+    end
+  end
+
+  describe '#statements' do
+    before do
+      account.deposit(50)
+    end
+
+    it 'prints a statement' do
+      expect(statement).to receive(:new).with(subject.transactions)
+      subject.print_statement
     end
   end
 end

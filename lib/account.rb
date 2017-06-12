@@ -1,11 +1,13 @@
 require_relative 'transaction'
+require_relative 'statement'
 
 class Account
-  attr_reader :balance, :transactions
+  attr_reader :balance, :transactions, :statement
 
-  def initialize
+  def initialize(statement: Statement)
     @balance = 0
     @transactions = []
+    @statement = statement
   end
 
   def deposit(amount)
@@ -17,6 +19,10 @@ class Account
     catch_error(amount)
     fail 'Withdrawal exceeds account balance' if (@balance - amount) < 0
     process_transaction(:withdrawal, amount)
+  end
+
+  def print_statement
+    statement.new(transactions)
   end
 
   private
