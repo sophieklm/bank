@@ -12,7 +12,17 @@ describe Account do
 
   describe '#deposit' do
     it 'increases the balance by the amount specified' do
-      expect{subject.deposit(10)}.to change{subject.balance}.by(10);
+      expect{subject.deposit(10)}.to change{subject.balance}.by(10)
+    end
+  end
+
+  describe '#withdraw' do
+    before do
+      account.deposit(50)
+    end
+    
+    it 'decreases the balance by the amount specified' do
+      expect{subject.withdraw(10)}.to change{subject.balance}.by(-10)
     end
   end
 
