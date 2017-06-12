@@ -25,13 +25,22 @@ class Account
     fail 'Cannot process a negative amount' if amount < 0
   end
 
+  def add_tranasaction(transaction)
+    self.transactions << transaction
+  end
+
   def process_transaction(type, amount)
     transaction = Transaction.new(type, amount)
-    self.transactions << transaction
+    add_tranasaction(transaction)
+    process_balance(type, amount)
+  end
+
+  def process_balance(type, amount)
     if type == :deposit
       @balance += amount
     elsif type == :withdrawal
       @balance -= amount
     end
   end
+
 end
