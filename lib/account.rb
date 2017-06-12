@@ -17,7 +17,7 @@ class Account
 
   def withdraw(amount)
     catch_error(amount)
-    fail 'Withdrawal exceeds account balance' if (@balance - amount) < 0
+    fail 'Withdrawal exceeds account balance' if balance_too_low?(amount)
     process_transaction(:withdrawal, amount)
   end
 
@@ -36,7 +36,7 @@ class Account
   end
 
   def process_transaction(type, amount)
-    transaction = Transaction.new(type, amount)
+    transaction = Transaction.new(type, amount, @balance)
     add_tranasaction(transaction)
     process_balance(type, amount)
   end
@@ -49,4 +49,7 @@ class Account
     end
   end
 
+  def balance_too_low?(amount)
+    balance < amount
+  end
 end

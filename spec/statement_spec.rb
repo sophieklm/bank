@@ -1,7 +1,7 @@
 require 'statement'
 
 describe Statement do
-  let(:transactions) { double [{ type: :deposit, amount: 20}]}
+  let(:transactions) { double [{ type: :deposit, amount: 20 }] }
   subject { described_class.new(transactions) }
 
   describe '#initialize' do
@@ -10,4 +10,9 @@ describe Statement do
     end
   end
 
+  describe '#print' do
+    it 'prints a statment' do
+      
+    end
+  end
 end
